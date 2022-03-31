@@ -1,10 +1,10 @@
-from flask import Flask, session, Blueprint
+from flask import Flask, session, Blueprint, redirect
 import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
 
-from _home import *
 from _login import *    
+from _home import *
 from _logout import *
 from _redirecting import *
 
@@ -26,7 +26,7 @@ app.register_blueprint(redirecting_bp)
 
 class User(db.Model):
     __tablename__ = 'user'
-    id_user = db.Column(db.Integer, auto_increment=True, primary_key = True)
+    id_user = db.Column(db.Integer, autoincrement=True, primary_key = True)
     username = db.Column(db.VARCHAR(255))
     nome = db.Column(db.VARCHAR(255))
     cognome = db.Column(db.VARCHAR(255))
@@ -57,7 +57,7 @@ class User(db.Model):
 
 class Conto(db.Model):
     __tablename__ = 'conto'
-    id = db.Column(db.Integer, auto_increment=True)
+    id = db.Column(db.Integer, autoincrement=True)
     iban = db.Column(db.VARCHAR(27))
     id_user = db.Column(db.Integer, db.ForeignKey('user.id_user'))
     n_conto = db.Column(db.VARCHAR(27), primary_key=True)
@@ -74,7 +74,7 @@ class Conto(db.Model):
 
 class Saldo(db.Model):
     __tablename__ = 'saldo'
-    id = db.Column(db.Integer, primary_key=True, auto_increment=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     importo = db.Column(db.Float)
     n_conto = db.Column(db.VARCHAR(27), db.ForeignKey('conto.n_conto'))
 
@@ -85,7 +85,7 @@ class Saldo(db.Model):
 
 class Transazione(db.Model):
     __tablename__ = 'transazione'
-    id = db.Column(db.Integer, auto_increment=True, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     iban2 = db.Column(db.VARCHAR(27))
     importo = db.Column(db.Float)
     data = db.Column(db.Date)
@@ -99,12 +99,9 @@ class Transazione(db.Model):
         self.n_conto = n_conto
 
 
-@app.route('/')
-def clear_all():
-    session.clear()
-    return redirect('/redirecting')
-
+def index():
+    return redirect('/logout')
 
 if __name__ == '__main__':
     app.run('localhost', 5000, debug=True)  
-    clear_all()
+    index()
