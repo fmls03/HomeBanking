@@ -1,9 +1,12 @@
-from flask import Flask
+from flask import Flask, session, Blueprint
 import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
 
-from home import *
+from _home import *
+from _login import *    
+from _logout import *
+from _redirecting import *
 
 secret_key = str(os.urandom(256))
 
@@ -16,6 +19,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 app.register_blueprint(home_bp)
+app.register_blueprint(login_bp)
+app.register_blueprint(logout_bp)
+app.register_blueprint(redirecting_bp)
 
 
 class User(db.Model):
@@ -93,5 +99,12 @@ class Transazione(db.Model):
         self.n_conto = n_conto
 
 
+@app.route('/')
+def clear_all():
+    session.clear()
+    return redirect('/redirecting')
+
+
 if __name__ == '__main__':
-    app.run('localhost', 5000, debug=True)
+    app.run('localhost', 5000, debug=True)  
+    clear_all()
