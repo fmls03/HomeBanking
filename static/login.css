@@ -13,29 +13,58 @@ body{
 }
 
 .login-page{
-	width: 50%;
+	width: 40%;
 	min-width: 300px;
 	height: 100%;
 	margin-left: auto;
 	backdrop-filter: blur(7px);
 	background-color: rgba(20, 20, 20, 0.5);
-	display: block;
+	display: flex;
+	justify-content: center;
 }
 
-.form-login{
-	width: 50%;
-	align-items: center;
+.login-form{
+	width: 70%;
+	max-width: 444px;
+	justify-content: center;
 	height: 100%;
 	display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     align-content: center;
-    margin-left: 25%;		
+    margin-left: 15%;
+    margin-right: 15%;		
 }
+
+.login-text{
+
+}
+
 
 .div-input-field{
+	margin-top: 15px;
 	text-align: center;
-
-	margin-top: 10px;
-
+	border-radius: 5px;
+	margin-left: 20%;
+	margin-right: 20%;
 }
+	
+
+.input-field{
+	border-radius: 4px;
+	border-width: 0px;
+	
+}
+
+.input-field:hover{
+
+    border-color: cornflowerblue;
+    box-shadow: 0 0 5px cornflowerblue;
+}
+
+.input-field:onclick{
+	border-radius: 0px;
+}
+	
 	
