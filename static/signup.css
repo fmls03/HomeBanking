@@ -66,19 +66,53 @@ body{
 }
 	
 	
-.have-account-text{
+.div-have-account{
 	padding-top: 20px; 
 	text-align: center;	
 	font-size: small;
 	color: white;
 }
 
-.Male-input{
-	text-align: left;
-	width: 50%;
+
+.div-sex{
+	width: 240px;
+	align-items: flex-start;
 }
 
-.Female-input{
-	text-align: right;
-	width: 50%;
+#sex-text{
+	color: white;
+	font-size: small;
+}
+
+
+#alert{
+	padding-top: 5px;
+	color: red;
+	font-size: small;
+}
+
+#have-account-text{
+	color: blue;
+}
+
+
+.div-button-signup{
+	text-align: center;
+	align-items: center;
+	padding-top: 10px;
+}
+
+.button-signup{
+	background-color: green;
+	color: white;
+	opacity: 0.8;
+	border-width: 0px;
+	border-radius: 3px;
+
+}
+
+.button-signup:hover{
+	opacity: 1;
+	box-shadow: 0 0 5 #90EE90; 
+	border-color: lightgreen;
 }

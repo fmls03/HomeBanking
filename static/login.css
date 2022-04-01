@@ -67,9 +67,35 @@ body{
 }
 	
 	
-.no-account-text{
+.div-no-account{
 	padding-top: 20px; 
 	text-align: center;	
 	font-size: small;
 	color: white;
+}
+
+#no-account-text{
+	color: blue;
+}
+
+.div-button-login{
+	text-align: center;
+	align-items: center;
+	padding-top: 10px;
+}
+
+
+.button-login{
+	background-color: green;
+	color: white;
+	opacity: 0.8;
+	border-width: 0px;
+	border-radius: 3px;
+
+}
+
+.button-login:hover{
+	opacity: 1;
+	box-shadow: 0 0 5 #90EE90; 
+	border-color: lightgreen;
 }

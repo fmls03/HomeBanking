@@ -10,7 +10,7 @@
 <body>
     
     <div class="signup-page">
-        <form class="signup-form">
+        <form class="signup-form" method="post">
 
             <span class="signup-text"> Sign up</span>
 
@@ -32,16 +32,16 @@
             </div>
 
             <div class="div-input-field">
-                <input class="input-field" type="password" name="password" placeholder="Password">
+                <input class="input-field" type="password" name="passw" placeholder="Password">
             </div>
 
             <div class="div-input-field">
-                <input class="input-field" type="password" name="password" placeholder="Confirm password">
+                <input class="input-field" type="password" name="confirm_passw" placeholder="Confirm password">
 
             </div>
 
             <div class="div-input-field">
-                <input class="input-field" type="cofice_fiscale" name="codice_fiscale" placeholder="codice_fiscale">
+                <input class="input-field" type="cofice_fiscale" name="codice_fiscale" placeholder="Codice fiscale">
             </div>
 
             <div class="div-input-field">
@@ -57,15 +57,25 @@
             </div>
 
             <div class="div-input-field">
-                <input class="input-field" type="date" name="data_di_nascita">
+                <input class="input-field" type="date" name="data_nascita" placeholder="dd/mm/yyyy"> 
             </div>
 
+            <div class="div-sex">
+                <input type="radio" name="sesso" value="maschio"> <span id="sex-text">Maschio</span>
+                <input type="radio" name="sesso" value="femmina"> <span id="sex-text">Femmina</span>
+            </div>
 
-        
-            <input class="male-input"type="radio" name="sex" value="male"> Male
-            <input class="female-input" type="radio" name="sex" value="female"> Female
+            {% if alert %}
+            <span id="alert">{{ alert }}</span>
+            {% endif %}
 
-            <div class="have-account-text">Hai già un account? <a href="/login">Clicca qui</a></div>
+
+            <div class="div-button-signup"><button type="submit" class="button-signup">Sign Up</button></div>
+
+            <div class="div-have-account">Hai già un account? <a href="/login" id="have-account-text">Clicca qui</a></div>
+
+
+            
         </form>
     </div>
 

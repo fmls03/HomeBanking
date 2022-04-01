@@ -10,7 +10,6 @@ from _app import *
 @login_bp.route('/login', methods=['GET', 'POST'])
 def login():
 	alert = ""
-	err = 0
 	logout()
 	if request.method == 'POST':
 		username = request.form['username']
@@ -18,15 +17,17 @@ def login():
 		users = User.query.all()
 		for user in users:
 			if username == user.username:
-				if passw == sha256_crypt.verify(passw, user.passw):
+				if sha256_crypt.verify(passw, user.passw):
 					session['logged_in'] = True
-					return redirect('/')				
-				else:
-					err += 1
-			else:
-				err += 1
+					print(session['logged_in'])
+					return redirect('/')	
 
-		if err > 0:
-			alert = '* WRONG CREDENTIALS *'
+
+				else:
+					alert = "* PASSWORD ERRATA *"
+			else:
+				alert = "* USERNAME NON ESISTENTE *"
+
+		
 
 	return render_template('login.html', alert = alert)

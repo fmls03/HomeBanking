@@ -15,16 +15,22 @@
             <span class="login-text"> Log In</span>
         
             <div class="div-input-field">
-                <input class="input-field" type="" name="" placeholder="Username">
+                <input class="input-field" type="username" name="username" placeholder="Username">
             </div>
 
             <div class="div-input-field">
-                <input class="input-field" type="" name="" placeholder="Password">
+                <input class="input-field" type="password" name="passw" placeholder="Password">
 
             
         </div>
 
-            <div class="no-account-text">Non possiedi un account? <a href="/signup">Clicca qui</a></div>
+        {% if alert %}
+            <span id="alert">{{ alert }}</span>
+        {% endif %}
+
+        <div class="div-button-login"><button type="submit" class="button-login">Log In</button></div>
+
+            <div class="div-no-account">Non possiedi un account? <a href="/signup" id="no-account-text">Clicca qui</a></div>
         </form>
     </div>
 
