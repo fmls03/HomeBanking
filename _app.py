@@ -7,6 +7,7 @@ from _login import *
 from _home import *
 from _logout import *
 from _redirecting import *
+from _signup import *
 
 secret_key = str(os.urandom(256))
 
@@ -22,6 +23,7 @@ app.register_blueprint(home_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(logout_bp)
 app.register_blueprint(redirecting_bp)
+app.register_blueprint(signup_bp)
 
 
 class User(db.Model):

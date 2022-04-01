@@ -12,7 +12,7 @@ body{
 	background-position: center center;
 }
 
-.login-page{
+.signup-page{
 	width: 40%;
 	min-width: 300px;
 	height: 100%;
@@ -23,8 +23,8 @@ body{
 	justify-content: center;
 }
 
-.login-form{
-	width: 70%;
+.signup-form{
+	width: 100%;
 	max-width: 444px;
 	justify-content: center;
 	height: 100%;
@@ -33,11 +33,10 @@ body{
     flex-direction: column;
     align-items: center;
     align-content: center;
-    margin-left: 15%;
-    margin-right: 15%;		
+    		
 }
 
-.login-text{
+.signup-text{
 	color: white;
 	font-size: larger;
 	margin-bottom: 35px;
@@ -67,9 +66,19 @@ body{
 }
 	
 	
-.no-account-text{
+.have-account-text{
 	padding-top: 20px; 
 	text-align: center;	
 	font-size: small;
 	color: white;
+}
+
+.Male-input{
+	text-align: left;
+	width: 50%;
+}
+
+.Female-input{
+	text-align: right;
+	width: 50%;
 }
