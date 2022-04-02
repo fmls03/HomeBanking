@@ -30,4 +30,4 @@ def login():
 
 		
 
-	return render_template('login.html', alert = alert)
+	return render_template('login.html', alert = alert, session=session)

@@ -99,3 +99,7 @@ body{
 	box-shadow: 0 0 5 #90EE90; 
 	border-color: lightgreen;
 }
+
+#alert{
+	color: red;
+}
