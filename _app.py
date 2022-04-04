@@ -40,6 +40,7 @@ class User(db.Model):
     sesso = db.Column(db.String(1))
     telefono = db.Column(db.VARCHAR(12))
     data_nascita = db.Column(db.Date)
+    città_nascita = db.Column(db.VARCHAR(255))
 
     conto = db.relationship('Conto', backref=('user'))
 
