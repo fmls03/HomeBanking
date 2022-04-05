@@ -44,7 +44,7 @@ class User(db.Model):
 
     conto = db.relationship('Conto', backref=('user'))
 
-    def __init__(self, username, nome, cognome, mail, passw, indirizzo, città, codice_fiscale, sesso, telefono, data_nascita, città_nascita):
+    def __init__(self, username, nome, cognome, mail, passw, indirizzo, città, codice_fiscale, sesso, telefono, data_nascita):
         self.username = username
         self.nome = nome
         self.cognome = cognome
@@ -56,7 +56,6 @@ class User(db.Model):
         self.sesso = sesso
         self.telefono = telefono
         self.data_nascita = data_nascita
-        self.città_nascita = città_nascita
   
 
 class Conto(db.Model):

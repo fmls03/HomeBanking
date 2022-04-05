@@ -1,0 +1,47 @@
+html{
+	height: 100%;
+
+}
+
+body{
+	height: 100%;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+}
+
+
+@font-face{
+	font-family: number_font;
+	src: url('fonts/Roboto_Mono.zip');
+}
+
+.div-saldo-container{
+	height: 30%;
+	max-height: 160px;
+	width: 80%;
+	display: flex;
+	background-color: green;
+	justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div-saldo-count{
+	height: 120px;
+	width: 80%;
+	display: flex;
+	background-color: light-green;
+	justify-content: center;
+}
+
+.saldo-count{
+	font-family: number_font;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: xx-large;
+}

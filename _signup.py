@@ -33,13 +33,15 @@ def signup():
 		sesso = request.form['sesso']
 
 		data_nascita_formattata = formatta_data(data_nascita)
-		codice_fiscale_giusto = (codicefiscale.encode(surname = cognome, name = nome, sex = sesso, birthdate = data_nascita_formattata, birthplace = città_nascita))
-		
+
 		users = _app.User.query.all()
 		for user in users:
 			if user.username == username:
 				err += 1
-				alert = '* USERNAME GIÀ REGISTRATO *'				
+				alert = '* USERNAME GIÀ REGISTRATO *'
+			elif codicefiscale.encode(surname = cognome, name = nome, sex = sesso, birthdate = data_nascita_formattata, birthplace = città_nascita) != codice_fiscale:
+				err += 1
+				alert = '* CODICE FISCALE ERRATO *'
 			elif user.email == email:
 				err += 1
 				alert = '* EMAIL GIÀ REGISTRATA *'
@@ -53,9 +55,7 @@ def signup():
 				err += 1
 				alert = '* CODICE FISCALE GIÀ REGISTRATO *'
 
-		if str(codice_fiscale_giusto) != codice_fiscale:
-			err += 1
-			alert = '* CODICE FISCALE ERRATO *'
+
 
 		if err == 0:
 			session['logged_in'] = True
