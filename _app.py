@@ -44,7 +44,7 @@ class User(db.Model):
 
     conto = db.relationship('Conto', backref=('user'))
 
-    def __init__(self, username, nome, cognome, mail, passw, indirizzo, città, codice_fiscale, sesso, telefono, data_nascita):
+    def __init__(self, username, nome, cognome, mail, passw, indirizzo, città, codice_fiscale, sesso, telefono, data_nascita, città_nascita):
         self.username = username
         self.nome = nome
         self.cognome = cognome
@@ -56,34 +56,33 @@ class User(db.Model):
         self.sesso = sesso
         self.telefono = telefono
         self.data_nascita = data_nascita
-  
+        self.città_nascita = città_nascita
+
 
 class Conto(db.Model):
     __tablename__ = 'conto'
-    id = db.Column(db.Integer, autoincrement=True)
+    id_conto = db.Column(db.Integer, autoincrement=True, primary_key=True)
     iban = db.Column(db.VARCHAR(27))
     id_user = db.Column(db.Integer, db.ForeignKey('user.id_user'))
-    n_conto = db.Column(db.VARCHAR(27), primary_key=True)
 
     saldo = db.relationship('Saldo', backref=('conto')) 
     transazione = db.relationship('Transazione', backref=('conto')) 
 
 
-    def __init__(self, iban, id_user, n_conto):
+    def __init__(self, iban, id_user):
         self.iban = iban
         self.id_user = id_user
-        self.n_conto = n_conto
 
 
 class Saldo(db.Model):
     __tablename__ = 'saldo'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    importo = db.Column(db.Float)
-    n_conto = db.Column(db.VARCHAR(27), db.ForeignKey('conto.n_conto'))
+    id_saldo = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    saldo = db.Column(db.Float)
+    id_conto = db.Column(db.Integer, db.ForeignKey('conto.id_conto'))
 
-    def __init__(self, importo, n_conto):
-        self.importo = importo
-        self.n_conto = n_conto
+    def __init__(self, saldo, id_conto):
+        self.saldo = saldo
+        self.id_conto = id_conto
         
 
 class Transazione(db.Model):
@@ -93,13 +92,13 @@ class Transazione(db.Model):
     importo = db.Column(db.Float)
     data = db.Column(db.Date)
     descrizione = db.Column(db.VARCHAR(255))
-    n_conto = db.Column(db.VARCHAR(27), db.ForeignKey('conto.n_conto'))
+    id_conto = db.Column(db.Integer, db.ForeignKey('conto.id_conto'))
 
-    def __init__(self, iban2, importo, data, n_conto):
+    def __init__(self, iban2, importo, data, id_conto):
         self.iban2 = iban2
         self.importo = importo
         self.data = data
-        self.n_conto = n_conto
+        self.id_conto = id_conto
 
 
 def index():

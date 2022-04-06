@@ -9,6 +9,7 @@ from sqlalchemy import *
 import _app
 from _logout import *
 from _formattazione_data import *
+from Iban_generator import *
 
 signup_bp = Blueprint('signup_bp', __name__)
 
@@ -60,8 +61,23 @@ def signup():
 		if err == 0:
 			session['logged_in'] = True
 			passw = sha256_crypt.hash(passw)	
+			iban = generate_iban()
+
 			new_user = _app.User(username, nome, cognome, email, passw, indirizzo, città, codice_fiscale, sesso, telefono, data_nascita, città_nascita)
 			_app.db.session.add(new_user)
+			_app.db.session.commit()
+			_app.db.session.refresh(new_user)
+			
+	
+			new_conto = _app.Conto(iban, new_user.id_user)
+			_app.db.session.add(new_conto)
+			_app.db.session.commit()
+			_app.db.session.refresh(new_conto)
+
+
+			saldo = _app.Saldo(0, new_conto.id_conto)
+			_app.db.session.add(saldo)	
+			
 			_app.db.session.commit()
 
 			return redirect('/')
