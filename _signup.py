@@ -5,7 +5,6 @@ from codicefiscale import codicefiscale
 
 from sqlalchemy import *
 
-
 import _app
 from _logout import *
 from _formattazione_data import *
@@ -60,6 +59,7 @@ def signup():
 
 		if err == 0:
 			session['logged_in'] = True
+			session['username'] = username
 			passw = sha256_crypt.hash(passw)	
 			iban = generate_iban()
 

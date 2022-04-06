@@ -10,13 +10,15 @@ body{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+	display: flex;
+	justify-content: center;
 }
 
 .login-page{
-	width: 40%;
-	min-width: 300px;
+	width: 60%;
+	min-width: 400px;
 	height: 100%;
-	margin-left: auto;
+	
 	backdrop-filter: blur(7px);
 	background-color: rgba(20, 20, 20, 0.5);
 	display: flex;
@@ -59,6 +61,11 @@ body{
 	border-width: 0px;
 	height: 20px;
 	width: 240px;
+	padding: 5px;
+    background: rgb(0,0,0,0.5);
+    color: white;
+    outline: none;
+    text-decoration: none;
 }
 
 .input-field:hover{

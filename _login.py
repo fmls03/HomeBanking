@@ -26,7 +26,7 @@ def login():
 
 		if err == 0:
 			session['logged_in'] = True
-			
+			session['username'] = username
 			return redirect('/')
 		
 

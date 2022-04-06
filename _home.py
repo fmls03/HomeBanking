@@ -7,6 +7,8 @@ from _app import *
 @home_bp.route('/home')
 def home():
     if session.get('logged_in') == False:
-        return redirect('/')
+        return redirect('/login')
+    else:
+        None    
     return render_template('home.html')
     
