@@ -6,24 +6,45 @@ html{
 body{
 	height: 100%;
 	margin: 0;
-	background-image: url('image/background1.jpg');
-	background-size: cover;
+	background: rgb(30,30,34);
+	background: linear-gradient(90deg, rgba(30,30,34,1) 0%, rgba(28,15,1,1) 100%);	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+	font-family: 'Raleway', sans-serif;
+}
+
+.page{
+	position: fixed;
+	width: 100%;
+	height: -webkit-fill-available;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-page{
+	width: 30%;
+	min-width: 400px;
+	height: 45%;
+	background-color: rgba(36, 36, 39, 0.6);
+	border-radius: 8px;
 	display: flex;
 	justify-content: center;
 }
 
-.login-page{
-	width: 60%;
-	min-width: 400px;
-	height: 100%;
-	
-	backdrop-filter: blur(7px);
-	background-color: rgba(20, 20, 20, 0.5);
+.nav-bar{
+	width: 100%;
+	height: 40px;
+	background-color:  rgba(36, 36, 39, 0.6);
 	display: flex;
-	justify-content: center;
+	align-items: center;
 }
+
+.nav-title{
+	margin-left: 8px;
+	color: white;
+}
+
 
 .login-form{
 	width: 70%;
@@ -66,12 +87,15 @@ body{
     color: white;
     outline: none;
     text-decoration: none;
+	font-family: 'Raleway', sans-serif;
 }
 
 .input-field:hover{
     border-color: cornflowerblue;
     box-shadow: 0 0 5px cornflowerblue;
 }
+
+
 	
 	
 .div-no-account{
@@ -82,18 +106,21 @@ body{
 }
 
 #no-account-text{
-	color: blue;
+	color: wheat;
 }
+
 
 .div-button-login{
 	text-align: center;
 	align-items: center;
 	padding-top: 10px;
+	
 }
 
 
 .button-login{
-	background-color: green;
+	background-color:rgb(0,255,0,0.4);
+	box-shadow: 0 0 1px black;
 	color: white;
 	opacity: 0.8;
 	border-width: 0px;
@@ -103,7 +130,7 @@ body{
 
 .button-login:hover{
 	opacity: 1;
-	box-shadow: 0 0 5 #90EE90; 
+	box-shadow: 0 0 1px #90EE90; 
 	border-color: lightgreen;
 }
 

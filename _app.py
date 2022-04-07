@@ -100,10 +100,9 @@ class Transazione(db.Model):
         self.data = data
         self.id_conto = id_conto
 
-
+@app.route('/')
 def index():
     return redirect('/logout')
 
 if __name__ == '__main__':
-    app.run('localhost', 5000, debug=True)  
-    index()
+    app.run('localhost', 5000, debug=True) 

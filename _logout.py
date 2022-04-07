@@ -7,4 +7,4 @@ logout_bp = Blueprint('logout_bp', __name__)
 def logout():
 	session.clear()
 	session['logged_in'] = False
-	return redirect('/')
+	return redirect('/redirecting')

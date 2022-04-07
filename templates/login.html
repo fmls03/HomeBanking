@@ -1,38 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="static/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
     <title>Login</title>
 </head>
+
 <body>
-    
-    <div class="login-page">
-        <form class="login-form" method="post">
 
-            <span class="login-text"> Log In</span>
-        
-            <div class="div-input-field">
-                <input class="input-field" type="username" name="username" placeholder="Username">
-            </div>
+    <nav class="nav-bar">
+        <span class="nav-title">Home Banking</span>
+    </nav>
 
-            <div class="div-input-field">
-                <input class="input-field" type="password" name="passw" placeholder="Password">
+    <div class="page">
+        <div class="login-page">
+            <form class="login-form" method="post">
 
-            
+                <span class="login-text"> Log In</span>
+
+                <div class="div-input-field">
+                    <input class="input-field" type="username" name="username" placeholder="Username">
+                </div>
+
+                <div class="div-input-field">
+                    <input class="input-field" type="password" name="passw" placeholder="Password">
+
+
+                </div>
+
+                {% if alert %}
+                <span id="alert">{{ alert }}</span>
+                {% endif %}
+
+                <div class="div-button-login"><button type="submit" class="button-login">Log In</button></div>
+
+                <div class="div-no-account">Non possiedi un account? <a href="/signup" id="no-account-text">Clicca
+                        qui</a>
+                </div>
+            </form>
         </div>
-
-        {% if alert %}
-            <span id="alert">{{ alert }}</span>
-        {% endif %}
-
-        <div class="div-button-login"><button type="submit" class="button-login">Log In</button></div>
-
-            <div class="div-no-account">Non possiedi un account? <a href="/signup" id="no-account-text">Clicca qui</a></div>
-        </form>
     </div>
-
 </body>
+
 </html>
