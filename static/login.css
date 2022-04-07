@@ -23,9 +23,9 @@ body{
 }
 
 .login-page{
-	width: 30%;
+	width: 400px;
 	min-width: 400px;
-	height: 45%;
+	height: 285px;
 	background-color: rgba(36, 36, 39, 0.6);
 	border-radius: 8px;
 	display: flex;
@@ -120,11 +120,13 @@ body{
 
 .button-login{
 	background-color:rgb(0,255,0,0.4);
-	box-shadow: 0 0 1px black;
+	box-shadow: 0 0 2px black;
 	color: white;
 	opacity: 0.8;
 	border-width: 0px;
 	border-radius: 3px;
+	font-size: small;
+	font-family: 'Raleway', sans-serif;
 
 }
 

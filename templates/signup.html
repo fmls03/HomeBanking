@@ -1,91 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="static/signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
     <title>Signup</title>
 </head>
+
 <body>
-    
-        
 
-    <div class="signup-page">
-        <form class="signup-form" method="post">
+    <nav class="nav-bar">
+        <span class="nav-title">Home Banking</span>
+    </nav>
 
-            <span class="signup-text"> Sign up</span>
+    <div class="page">
+        <div class="signup-page">
+            <form class="signup-form" method="post">
 
-            <div class="div-input-field">
-                <input class="input-field" type="nome" name="nome" placeholder="Nome" required>
-            </div>
+                <span class="signup-text"> Sign up</span>
+               
+                <div class="columns">
+                    <div class="column">
+                        <div class="div-input-field">
+                            <input class="input-field" type="nome" name="nome" placeholder="Nome" required>
+                        </div>
 
-            <div class="div-input-field">
-                <input class="input-field" type="cognome" name="cognome" placeholder="Cognome" required>
-            </div>
-        
-        
-            <div class="div-input-field">
-                <input class="input-field" type="username" name="username" placeholder="Username" required>
-            </div>
-
-            <div class="div-input-field">
-                <input class="input-field" type="email" name="email" placeholder="Email">
-            </div>
-
-            <div class="div-input-field">
-                <input class="input-field" type="password" name="passw" placeholder="Password" required>
-            </div>
-
-            <div class="div-input-field">
-                <input class="input-field" type="password" name="confirm_passw" placeholder="Confirm password"required>
-
-            </div>
-
-            <div class="div-input-field">
-                <input class="input-field" type="cofice_fiscale" name="codice_fiscale" placeholder="Codice fiscale" required>
-            </div>
-
-            <div class="div-input-field">
-                <input class="input-field" type="indirizzo" name="indirizzo" placeholder="Via Paolo Rossi, 24" required>
-            </div>
-
-            <div class="div-input-field">
-                <input class="input-field" type="città" name="città" placeholder="Città" required>
-            </div>
-
-            <div class="div-input-field">
-                <input class="input-field" type="telefono" name="telefono" placeholder="Telefono" required>
-            </div>
-
-            <div class="div-input-field">
-                <input class="input-field" type="date" name="data_nascita" placeholder="dd/mm/yyyy" required> 
-            </div>
-
-            <div class="div-input-field">
-                <input class="input-field" type="città_nascita" name="città_nascita" placeholder="Città di nascita" required> 
-            </div>
-
-            <div class="div-sex">
-                <input type="radio" name="sesso" value="M"> <span id="sex-text">Maschio</span>
-                <input type="radio" name="sesso" value="F"> <span id="sex-text">Femmina</span>
-            </div>
-
-            {% if alert %}
-            <span id="alert">{{ alert }}</span>
-            {% endif %}
+                        <div class="div-input-field">
+                            <input class="input-field" type="cognome" name="cognome" placeholder="Cognome" required>
+                        </div>
 
 
-            <div class="div-button-signup"><button type="submit" class="button-signup">Sign Up</button></div>
+                        <div class="div-input-field">
+                            <input class="input-field" type="username" name="username" placeholder="Username" required>
+                        </div>
 
-            <div class="div-have-account">Hai già un account? <a href="/login" id="have-account-text">Clicca qui</a></div>
+                        <div class="div-input-field">
+                            <input class="input-field" type="email" name="email" placeholder="Email">
+                        </div>
+
+                        <div class="div-input-field">
+                            <input class="input-field" type="password" name="passw" placeholder="Password" required>
+                        </div>
+
+                        <div class="div-input-field">
+                            <input class="input-field" type="password" name="confirm_passw"
+                                placeholder="Confirm password" required>
+
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="div-input-field">
+                            <input class="input-field" type="cofice_fiscale" name="codice_fiscale"
+                                placeholder="Codice fiscale" required>
+                        </div>
+
+                        <div class="div-input-field">
+                            <input class="input-field" type="indirizzo" name="indirizzo"
+                                placeholder="Via Paolo Rossi, 24" required>
+                        </div>
+
+                        <div class="div-input-field">
+                            <input class="input-field" type="città" name="città" placeholder="Città" required>
+                        </div>
+
+                        <div class="div-input-field">
+                            <input class="input-field" type="telefono" name="telefono" placeholder="Telefono" required>
+                        </div>
+
+                        <div class="div-input-field">
+                            <input class="input-field" type="date" name="data_nascita" placeholder="dd/mm/yyyy"
+                                required>
+                        </div>
+
+                        <div class="div-input-field">
+                            <input class="input-field" type="città_nascita" name="città_nascita"
+                                placeholder="Città di nascita" required>
+                        </div>
+                    </div>
+                </div>
 
 
-            
+                <div class="div-sex">
+                    <input type="radio" name="sesso" value="M"> <span id="sex-text">Maschio</span>
+                    <input type="radio" name="sesso" value="F"> <span id="sex-text">Femmina</span>
+                </div>
 
-            
-        </form>
+                {% if alert %}
+                <span id="alert">{{ alert }}</span>
+                {% endif %}
+
+
+                <div class="div-button-signup"><button type="submit" class="button-signup">Sign Up</button></div>
+
+                <div class="div-have-account">Hai già un account? <a href="/login" id="have-account-text">Clicca qui</a>
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+
     </div>
-
 </body>
+
 </html>
