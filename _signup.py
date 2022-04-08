@@ -80,7 +80,7 @@ def signup():
 			
 			_app.db.session.commit()
 
-			return redirect('/')
+			return redirect('/redirecting')
 
 
 	return render_template('signup.html', alert = alert, session=session)

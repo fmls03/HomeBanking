@@ -25,9 +25,13 @@ def login():
 				alert = '* WRONG PASSWORD *'
 
 		if err == 0:
+			user = User.query.filter_by(username = username).first()
+			conto = Conto.query.filter_by(id_user = user.id_user).first()
 			session['logged_in'] = True
-			session['username'] = username
-			return redirect('/')
+			session['id_user'] = user.id_user
+			session['id_conto'] = conto.id_conto
+			print(session.get('id_user'))
+			return redirect('/redirecting')
 		
 
 	return render_template('login.html', alert = alert, session=session)

@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="static/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-    
-    
+
+    <nav class="nav-bar">
+        <span class="nav-title">Home Banking</span>
+    </nav>
+    <div class="page">
         <div class="div-saldo-container">
             <div class="div-saldo-count">
                 <span class="saldo-count">
-                    1.000,00$
+                    {{ saldo.saldo }}$
                 </span>
             </div>
         </div>
+        <div class="filler-space">
+        </div>
+    
+        {% for transazione in transazioni %}
         
+        <div class="div-transaction">
+            <span class="name-transaction">transazione.descrizione</span>
+            {% if transazione.importo > 0 %}
+            
+            <span class="value-transaction" style="color: lime;" >{{ transazione.importo }}$</span>
+            {% elif transazione.importo < 0 %}
+            <span class="value-transaction" style="color: red;">{{  transazione.importo }}$</span>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
 
 </body>
+
 </html>

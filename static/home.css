@@ -6,25 +6,51 @@ html{
 body{
 	height: 100%;
 	margin: 0;
+	background: rgb(30,30,34);
+	background: linear-gradient(90deg, rgba(30,30,34,1) 0%, rgba(31,11,0,1) 100%);	background-size: cover;
 	display: flex;
 	justify-content: center;
+	font-family: 'Raleway', sans-serif;
+	flex-direction: column;
+}
+
+.page{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+
 }
 
 
-@font-face{
-	font-family: number_font;
-	src: url('fonts/Roboto_Mono.zip');
+
+.nav-bar{
+	width: 100%;
+	height: 40px;
+	background-color:  rgba(36, 36, 39, 0.6);
+	display: flex;
+	align-items: center;
 }
+
+.nav-title{
+	margin-left: 8px;
+	color: white;
+}
+
+
 
 .div-saldo-container{
-	height: 30%;
-	max-height: 160px;
-	width: 80%;
+	height: 160px;
+	width: 720px;
 	display: flex;
-	background-color: green;
+	background-color: rgba(36, 36, 39, 0.6);
+	border-radius: 8px;
 	justify-content: center;
     flex-direction: column;
     align-items: center;
+	margin-top: 40px;
+	box-shadow: 3px 3px 8px rgb(0,0,0, 0.3);
 }
 
 .div-saldo-count{
@@ -35,6 +61,42 @@ body{
 	justify-content: center;
 }
 
+.filler-space{
+	width: 100%;
+	height: 50px;
+}
+
+
+.div-transaction{
+	margin-top: 20px;
+	width: 720px;
+	height: 60px;
+	border-radius: 8px;
+	background-color: rgba(36, 36, 39, 0.6);
+	box-shadow: 3px 3px 8px rgb(0,0,0, 0.3);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+}
+
+.name-transaction{
+	margin-left: 20px;
+	color: whitesmoke;
+}
+
+.value-transaction{
+	margin-left: auto;
+	margin-right: 20px;
+}
+
+.date-transaction{
+	
+	font-size: small;
+	color: whitesmoke;
+
+}
+
 .saldo-count{
 	font-family: number_font;
 	height: 100%;
@@ -43,5 +105,7 @@ body{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-size: xx-large;
+	font-size: xxx-large;
+	color: whitesmoke;
+	font-family: 'Raleway', sans-serif;
 }
