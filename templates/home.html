@@ -20,19 +20,24 @@
     <div class="page">
         <div class="div-saldo-container">
             <div class="div-saldo-count">
-                <span class="saldo-count">
-                    {{ saldo.saldo }}$
+                <span id="text-saldo-disp"> Saldo disponibile:</span>
+                <span class="saldo-disp">
+                    {{ saldo.saldo_disponibile }}$
                 </span>
+
+                <span id="text-saldo-cont"> Saldo contabile: <span class="saldo-cont"> {{ saldo.saldo_contabile }}$</span></span>
             </div>
         </div>
+        
         <div class="filler-space">
+
         </div>
 
         {% for transazione in transazioni %}
 
         <div class="div-transaction">
             <div class="div-name-date">
-                <span class="name-transaction">{{ transazione.descrizione }}</span>
+                <span class="name-transaction">{{ transazione.titolo }}</span>
                 
                 <span class="date-transaction">{{ transazione.data}}</span>
             </div>

@@ -75,7 +75,7 @@ def signup():
 			_app.db.session.refresh(new_conto)
 
 
-			saldo = _app.Saldo(0, new_conto.id_conto)
+			saldo = _app.Saldo(0, 0, new_conto.id_conto)
 			_app.db.session.add(saldo)	
 			
 			_app.db.session.commit()

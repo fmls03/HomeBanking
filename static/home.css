@@ -1,5 +1,5 @@
 html{
-	height: 100%;
+
 	min-height: 590px;
 }
 
@@ -60,12 +60,57 @@ body{
 	width: 80%;
 	display: flex;
 	background-color: light-green;
+	flex-direction: column;
 	justify-content: center;
 }
 
+#text-saldo-disp{
+	margin-bottom: 10px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.saldo-disp{
+	font-family: number_font;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: xxx-large;
+	
+	color: whitesmoke;
+	font-family: 'Raleway', sans-serif;
+	margin-bottom: auto;
+}
+
+#text-saldo-cont{
+	text-align: center;
+	color: whitesmoke;
+}
+
+.saldo-cont{
+	text-align: center;
+	font-size: large;
+	font-weight: bolder;
+	color: whitesmoke;
+}
+
+
 .filler-space{
-	width: 100%;
+	width: 80%;
+	max-width: 720px;
 	height: 50px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.btn-prezzo-cre-desc{
+	width: 15px;
+	height: 15px;
+	margin-left: auto;
+	margin-top: 20px;
+	margin-right: 10px;
 }
 
 
@@ -89,7 +134,6 @@ body{
 
 
 .name-transaction{
-	
 	color: whitesmoke;
 	margin-top: 15px;
 }
@@ -104,18 +148,5 @@ body{
 	padding-top: 5px;
 	font-size: small;
 	color: whitesmoke;
-
 }
 
-.saldo-count{
-	font-family: number_font;
-	height: 100%;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	font-size: xxx-large;
-	color: whitesmoke;
-	font-family: 'Raleway', sans-serif;
-}

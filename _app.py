@@ -77,11 +77,13 @@ class Conto(db.Model):
 class Saldo(db.Model):
     __tablename__ = 'saldo'
     id_saldo = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    saldo = db.Column(db.Float)
+    saldo_contabile = db.Column(db.Float)
+    saldo_disponibile = db.Column(db.Float)
     id_conto = db.Column(db.Integer, db.ForeignKey('conto.id_conto'))
 
-    def __init__(self, saldo, id_conto):
-        self.saldo = saldo
+    def __init__(self, saldo_contabile, saldo_disponibile, id_conto):
+        self.saldo_contabile = saldo_contabile
+        self.saldo_disponibile  = saldo_disponibile
         self.id_conto = id_conto
         
 
@@ -91,13 +93,16 @@ class Transazione(db.Model):
     iban2 = db.Column(db.VARCHAR(27))
     importo = db.Column(db.Float)
     data = db.Column(db.Date)
+    titolo = db.Column(db.VARCHAR(255))
     descrizione = db.Column(db.VARCHAR(255))
     id_conto = db.Column(db.Integer, db.ForeignKey('conto.id_conto'))
 
-    def __init__(self, iban2, importo, data, id_conto):
+    def __init__(self, iban2, importo, titolo, descrizione, data, id_conto):
         self.iban2 = iban2
         self.importo = importo
         self.data = data
+        self.titolo = titolo
+        self.descrizione = descrizione
         self.id_conto = id_conto
 
 @app.route('/')
