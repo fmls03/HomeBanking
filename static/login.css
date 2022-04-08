@@ -119,7 +119,7 @@ body{
 
 
 .button-login{
-	background-color:rgb(124,42,0,0.6);
+	background-color:rgba(41, 14, 0, 0.6);
 	box-shadow: 0 0 1px black;
 	color: white;
 	opacity: 0.8;

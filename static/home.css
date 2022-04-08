@@ -6,6 +6,7 @@ html{
 body{
 	height: 100%;
 	margin: 0;
+	min-width: 280px;
 	background: rgb(30,30,34);
 	background: linear-gradient(90deg, rgba(30,30,34,1) 0%, rgba(31,11,0,1) 100%);	background-size: cover;
 	display: flex;
@@ -42,7 +43,8 @@ body{
 
 .div-saldo-container{
 	height: 160px;
-	width: 720px;
+	width: 80%;
+	max-width: 720px;
 	display: flex;
 	background-color: rgba(36, 36, 39, 0.6);
 	border-radius: 8px;
@@ -69,29 +71,37 @@ body{
 
 .div-transaction{
 	margin-top: 20px;
-	width: 720px;
+	width: 80%;
+	max-width: 720px;
 	height: 60px;
 	border-radius: 8px;
 	background-color: rgba(36, 36, 39, 0.6);
 	box-shadow: 3px 3px 8px rgb(0,0,0, 0.3);
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-
 }
 
+.div-name-date{
+	margin-left: 20px;	
+	display: flex;
+	flex-direction: column;
+}
+
+
 .name-transaction{
-	margin-left: 20px;
+	
 	color: whitesmoke;
+	margin-top: 15px;
 }
 
 .value-transaction{
+	margin-top: 20px;
 	margin-left: auto;
 	margin-right: 20px;
 }
 
 .date-transaction{
-	
+	padding-top: 5px;
 	font-size: small;
 	color: whitesmoke;
 
