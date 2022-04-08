@@ -152,8 +152,7 @@ body{
 }
 
 .button-signup{
-	background-color:rgb(124,42,0,0.6);
-	box-shadow: 0 0 1px black;
+	background-color:rgb(97, 32, 0, 0.6);
 	color: white;
 	opacity: 0.8;
 	border-width: 0px;
@@ -165,6 +164,5 @@ body{
 
 .button-signup:hover{
 	opacity: 1;
-	box-shadow: 0 0 1px orange;
-	border-color: orange;
+	box-shadow: 0 0 1px wheat;
 }

@@ -119,8 +119,7 @@ body{
 
 
 .button-login{
-	background-color:rgba(41, 14, 0, 0.6);
-	box-shadow: 0 0 1px black;
+	background-color:rgba(97, 32, 0, 0.6);
 	color: white;
 	opacity: 0.8;
 	border-width: 0px;
@@ -133,8 +132,7 @@ body{
 
 .button-login:hover{
 	opacity: 1;
-	box-shadow: 0 0 1px orange;
-	border-color: orange;
+	box-shadow: 0 0 1px wheat;
 }
 
 #alert{
