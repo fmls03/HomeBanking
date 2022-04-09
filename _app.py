@@ -1,4 +1,5 @@
-from flask import Flask, session, Blueprint, redirect
+from enum import unique
+from flask import Flask, redirect
 import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
@@ -29,14 +30,14 @@ app.register_blueprint(signup_bp)
 class User(db.Model):
     __tablename__ = 'user'
     id_user = db.Column(db.Integer, autoincrement=True, primary_key = True)
-    username = db.Column(db.VARCHAR(255))
+    username = db.Column(db.VARCHAR(255), unique=True)
     nome = db.Column(db.VARCHAR(255))
     cognome = db.Column(db.VARCHAR(255))
     mail = db.Column(db.VARCHAR(255))
     passw = db.Column(db.VARCHAR(255))
     indirizzo = db.Column(db.VARCHAR(255))
     città = db.Column(db.VARCHAR(255))
-    codice_fiscale = db.Column(db.String(16))
+    codice_fiscale = db.Column(db.String(16), unique=True)
     sesso = db.Column(db.String(1))
     telefono = db.Column(db.VARCHAR(12))
     data_nascita = db.Column(db.Date)
@@ -62,7 +63,7 @@ class User(db.Model):
 class Conto(db.Model):
     __tablename__ = 'conto'
     id_conto = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    iban = db.Column(db.VARCHAR(27))
+    iban = db.Column(db.VARCHAR(27),unique=True)
     id_user = db.Column(db.Integer, db.ForeignKey('user.id_user'))
 
     saldo = db.relationship('Saldo', backref=('conto')) 
@@ -79,7 +80,7 @@ class Saldo(db.Model):
     id_saldo = db.Column(db.Integer, primary_key=True, autoincrement=True)
     saldo_contabile = db.Column(db.Float)
     saldo_disponibile = db.Column(db.Float)
-    id_conto = db.Column(db.Integer, db.ForeignKey('conto.id_conto'))
+    id_conto = db.Column(db.Integer, db.ForeignKey('conto.id_conto'), unique=True)
 
     def __init__(self, saldo_contabile, saldo_disponibile, id_conto):
         self.saldo_contabile = saldo_contabile
@@ -90,19 +91,20 @@ class Saldo(db.Model):
 class Transazione(db.Model):
     __tablename__ = 'transazione'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    iban2 = db.Column(db.VARCHAR(27))
+    beneficiario = db.Column(db.VARCHAR(255))
+    iban_beneficiario = db.Column(db.VARCHAR(27))
     importo = db.Column(db.Float)
     data = db.Column(db.Date)
     titolo = db.Column(db.VARCHAR(255))
-    descrizione = db.Column(db.VARCHAR(255))
+    causale = db.Column(db.VARCHAR(255))
     id_conto = db.Column(db.Integer, db.ForeignKey('conto.id_conto'))
 
-    def __init__(self, iban2, importo, titolo, descrizione, data, id_conto):
+    def __init__(self, iban2, importo, titolo, causale, data, id_conto):
         self.iban2 = iban2
         self.importo = importo
         self.data = data
         self.titolo = titolo
-        self.descrizione = descrizione
+        self.causale = causale
         self.id_conto = id_conto
 
 @app.route('/')
