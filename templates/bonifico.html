@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/bonifico.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <title>Bonifico Istantaneo</title>
+</head>
+
+<body>
+
+    <nav class="nav-bar">
+        <a href="/home">
+            <span class="nav-title">
+                HomeBanking
+            </span>
+        </a>
+    </nav>
+
+    <div class="page">
+        <div class="bonifico-page">
+            <form class="bonifico-form" method="post">
+
+                <span class="Bonifico-text"> Log In</span>
+
+                <div class="div-input-field">
+                    <input class="input-field" type="beneficiario" name="beneficiario" placeholder="Beneficiario" required>
+                </div>
+
+                <div class="div-input-field">
+                    <input class="input-field" type="iban2" name="iban2" placeholder="Iban del beneficiario" required>
+                </div>
+
+                <div class="div-input-field">
+                    <input class="input-field" type="number" name="importo" placeholder="Importo" required>
+                </div>
+
+                <div class="div-input-field">
+                    <input class="causale-input-field" type="causale" name="causale" placeholder="Causale" required>
+                </div>
+
+
+                <div class="div-button-bonifico"><button type="submit" class="button-bonifico">Invia bonifico</button></div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>

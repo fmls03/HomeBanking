@@ -9,6 +9,7 @@ from _home import *
 from _logout import *
 from _redirecting import *
 from _signup import *
+from _bonifico import *
 
 secret_key = str(os.urandom(256))
 
@@ -25,6 +26,7 @@ app.register_blueprint(login_bp)
 app.register_blueprint(logout_bp)
 app.register_blueprint(redirecting_bp)
 app.register_blueprint(signup_bp)
+app.register_blueprint(bonifico_bp)
 
 
 class User(db.Model):
@@ -33,7 +35,7 @@ class User(db.Model):
     username = db.Column(db.VARCHAR(255), unique=True)
     nome = db.Column(db.VARCHAR(255))
     cognome = db.Column(db.VARCHAR(255))
-    mail = db.Column(db.VARCHAR(255))
+    email = db.Column(db.VARCHAR(255))
     passw = db.Column(db.VARCHAR(255))
     indirizzo = db.Column(db.VARCHAR(255))
     città = db.Column(db.VARCHAR(255))
@@ -45,11 +47,11 @@ class User(db.Model):
 
     conto = db.relationship('Conto', backref=('user'))
 
-    def __init__(self, username, nome, cognome, mail, passw, indirizzo, città, codice_fiscale, sesso, telefono, data_nascita, città_nascita):
+    def __init__(self, username, nome, cognome, email, passw, indirizzo, città, codice_fiscale, sesso, telefono, data_nascita, città_nascita):
         self.username = username
         self.nome = nome
         self.cognome = cognome
-        self.mail = mail
+        self.email = email
         self.passw = passw
         self.indirizzo = indirizzo
         self.città = città
@@ -91,19 +93,18 @@ class Saldo(db.Model):
 class Transazione(db.Model):
     __tablename__ = 'transazione'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    beneficiario = db.Column(db.VARCHAR(255))
-    iban_beneficiario = db.Column(db.VARCHAR(27))
+    user_mittente = db.Column(db.VARCHAR(255))
+    iban_destinatario = db.Column(db.CHAR(27))
     importo = db.Column(db.Float)
     data = db.Column(db.Date)
-    titolo = db.Column(db.VARCHAR(255))
     causale = db.Column(db.VARCHAR(255))
     id_conto = db.Column(db.Integer, db.ForeignKey('conto.id_conto'))
 
-    def __init__(self, iban2, importo, titolo, causale, data, id_conto):
-        self.iban2 = iban2
+    def __init__(self, user_mittente, iban_destinatario, importo, data, causale, id_conto):
+        self.user_mittente = user_mittente
+        self.iban_destinatario = iban_destinatario
         self.importo = importo
         self.data = data
-        self.titolo = titolo
         self.causale = causale
         self.id_conto = id_conto
 

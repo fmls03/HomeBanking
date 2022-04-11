@@ -40,6 +40,12 @@ body{
 }
 
 
+#link-bonifico{
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+
 
 .div-saldo-container{
 	height: 160px;
