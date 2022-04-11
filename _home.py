@@ -1,5 +1,4 @@
-from flask import  Blueprint, render_template, session, redirect, request
-from requests import request
+from flask import Flask,  Blueprint, render_template, session, redirect, request
 from sqlalchemy import all_, desc
 home_bp = Blueprint('home_bp', __name__)
 
@@ -12,6 +11,14 @@ def home():
         return redirect('/logout')
     else:
         saldo = _app.Saldo.query.filter_by(id_conto = session.get('id_conto')).first()
-        transazioni = _app.Transazione.query.filter_by(id_conto = session.get('id_conto')).order_by(desc(_app.Transazione.data)).all()  
+        transazioni_ricevute = _app.Transazione.query.filter_by(id_conto = session.get('id_conto')).order_by(desc(_app.Transazione.data)).all()
+        transazioni_effettuate = _app.Transazione.query.filter_by(user_mittente = session.get('username')).order_by(desc(_app.Transazione.data)).all()
+        
+        for t in transazioni_effettuate:
+            t.importo = -t.importo
+            
+        transazioni = [*transazioni_effettuate, *transazioni_ricevute]
+        transazioni.sort(key=lambda x: x.data, reverse=True)
+        
         return render_template('home.html', session=session, transazioni = transazioni, saldo = saldo)
     

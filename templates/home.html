@@ -43,9 +43,9 @@
 
         <div class="div-transaction">
             <div class="div-name-date">
-                <span class="name-transaction">{{ transazione.user2 }}</span>
+                <span class="name-transaction">{{ transazione.user_mittente }}</span>
 
-                <span class="date-transaction">{{ transazione.data}}</span>
+                <span class="date-transaction">{{ transazione.data }}</span>
             </div>
             {% if transazione.importo > 0 %}
             <span class="value-transaction" style="color: lime;">+{{ transazione.importo }}$</span>
