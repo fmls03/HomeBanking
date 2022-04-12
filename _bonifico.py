@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, request, session
+from flask import Flask, Blueprint, render_template, request, session, redirect
 import datetime
 from sqlalchemy import *
 
@@ -49,6 +49,8 @@ def bonifico():
             _app.db.session.merge(saldo_destinatario)
             _app.db.session.commit()
             _app.db.session.refresh(saldo_destinatario)
+
+            return redirect('/home')
 
 
     return render_template('bonifico.html', session = session, alert = alert)

@@ -39,12 +39,20 @@ body{
 	color: white;
 }
 
-
-#link-bonifico{
-    margin-left: auto;
-    margin-right: 15px;
+#link-home{
+	text-decoration: none;
 }
 
+#link-bonifico{
+	margin-left: auto;
+    margin-right: 15px;
+	text-decoration: none;
+	color: white;
+}
+
+#span-bonifico{
+	color: white;
+}
 
 
 .div-saldo-container{
@@ -130,6 +138,11 @@ body{
 	box-shadow: 3px 3px 8px rgb(0,0,0, 0.3);
 	display: flex;
 	flex-direction: row;
+}
+
+.div-transaction:hover{
+	border-color: cornflowerblue;
+    box-shadow: 0 0 5px cornflowerblue;
 }
 
 .div-name-date{

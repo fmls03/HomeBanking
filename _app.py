@@ -10,6 +10,7 @@ from _logout import *
 from _redirecting import *
 from _signup import *
 from _bonifico import *
+from _admin import *
 
 secret_key = str(os.urandom(256))
 
@@ -27,6 +28,7 @@ app.register_blueprint(logout_bp)
 app.register_blueprint(redirecting_bp)
 app.register_blueprint(signup_bp)
 app.register_blueprint(bonifico_bp)
+app.register_blueprint(admin_bp)
 
 
 class User(db.Model):

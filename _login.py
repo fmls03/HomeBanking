@@ -32,7 +32,10 @@ def login():
 			session['username'] = user.username
 			session['id_conto'] = conto.id_conto
 			print(session.get('id_user'))
-			return redirect('/redirecting')
+			if session.get('username') == 'admin':
+				return redirect('/admin')
+			else:
+				return redirect('/redirecting')
 		
 
 	return render_template('login.html', alert = alert, session=session)
