@@ -47,7 +47,7 @@ class User(db.Model):
     data_nascita = db.Column(db.Date)
     città_nascita = db.Column(db.VARCHAR(255))
 
-    conto = db.relationship('Conto', backref=('user'))
+    conto = db.relationship('Conto', backref='user', uselist=False)
 
     def __init__(self, username, nome, cognome, email, passw, indirizzo, città, codice_fiscale, sesso, telefono, data_nascita, città_nascita):
         self.username = username
@@ -70,8 +70,8 @@ class Conto(db.Model):
     iban = db.Column(db.VARCHAR(27),unique=True)
     id_user = db.Column(db.Integer, db.ForeignKey('user.id_user'))
 
-    saldo = db.relationship('Saldo', backref=('conto')) 
-    transazione = db.relationship('Transazione', backref=('conto')) 
+    saldo = db.relationship('Saldo', backref='conto', uselist=False) 
+    transazioni = db.relationship('Transazione', backref='conto') 
 
 
     def __init__(self, iban, id_user):

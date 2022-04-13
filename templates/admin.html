@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/home.css">
+    <link rel="stylesheet" type="text/css" href="static/admin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
@@ -15,19 +15,33 @@
 <body>
 
     <nav class="nav-bar">
-        <a id="link-home" href="/home">
+        <a id="link-admin" href="/admin">
             <span class="nav-title">
-                HomeBanking
+                Admin
             </span>
         </a>
-        <a id="link-bonifico" href="/bonifico">
-            <span id="span-bonifico">
-                Bonifico Istantaneo
-            </span>
-        </a>
+    </nav>
+    <form method="post">
+    <div class="page">
 
+        <span id="span-users">
+            Utenti
+        </span>
+        {% for user in users %}
+        <div class="users">
+            <span id="span-username">{{user.username}}</span>
+            <span id="span-saldo-disponibile">- saldo disponibile: {{user.conto.saldo.saldo_disponibile}}$</span>
+            <div class="div-buttons">
+                <button type="submit" id="btn-actions" name="invia-denaro" value="{{user.conto.id_conto}}">Invia denaro</button>
+                <button type="submit" id="btn-actions" name="svuota-saldo" value="{{user.conto.id_conto}}">Svuota saldo</button>
+                <button type="submit" id="btn-actions" name="elimina-utente" value="{{user.conto.id_conto}}">Elimina utente</button>
+            </div>
 
+        </div>
 
+        {% endfor %}
+    </div>
+    </form>
 </body>
 
 </html>

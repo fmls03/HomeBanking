@@ -7,8 +7,8 @@ from sqlalchemy import *
 
 import _app
 from _logout import *
-from _formattazione_data import *
-from Iban_generator import *
+from formattazione_data import *
+from iban_generator import *
 
 signup_bp = Blueprint('signup_bp', __name__)
 
