@@ -32,9 +32,10 @@
             <span id="span-username">{{user.username}}</span>
             <span id="span-saldo-disponibile">- saldo disponibile: {{user.conto.saldo.saldo_disponibile}}$</span>
             <div class="div-buttons">
-                <button type="submit" id="btn-actions" name="invia-denaro" value="{{user.conto.id_conto}}">Invia denaro</button>
-                <button type="submit" id="btn-actions" name="svuota-saldo" value="{{user.conto.id_conto}}">Svuota saldo</button>
-                <button type="submit" id="btn-actions" name="elimina-utente" value="{{user.conto.id_conto}}">Elimina utente</button>
+                <button type="submit" id="btn-actions" name="action" value="invia-denaro">Invia denaro</button>
+                <button type="submit" id="btn-actions" name="svuota-saldo" value="{{user.id_user}}">Svuota saldo</button>
+                <button type="submit" id="btn-actions" name="elimina-utente" value="{{user.id_user}}">Elimina utente</button>
+            </button>
             </div>
 
         </div>

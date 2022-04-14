@@ -7,7 +7,6 @@ import _app
 @home_bp.route('/home', methods=['GET', 'POST'])
 def home():
     if not session.get('logged_in'):
-        print(session.get('logged_in'))
         return redirect('/logout')
     else:
         saldo = _app.Saldo.query.filter_by(id_conto = session.get('id_conto')).first()

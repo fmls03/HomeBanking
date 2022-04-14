@@ -76,6 +76,11 @@ body{
 	margin-left: auto;
 }
 
+#btn-id_user{
+	display: none;
+}
+
+
 #btn-actions{
 	border-width: 0px;
 	height: 20px;
