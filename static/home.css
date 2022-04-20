@@ -45,7 +45,7 @@ body{
 
 #link-bonifico{
 	margin-left: auto;
-    margin-right: 15px;
+    margin-right: 35px;
 	text-decoration: none;
 	color: white;
 }
@@ -54,6 +54,16 @@ body{
 	color: white;
 }
 
+#link-logout{
+	color: white;
+	text-decoration: none;
+	margin-right: 15px;
+}
+
+#username{
+	color: white;
+	margin-top: 20px;
+}
 
 .div-saldo-container{
 	height: 160px;
@@ -65,7 +75,7 @@ body{
 	justify-content: center;
     flex-direction: column;
     align-items: center;
-	margin-top: 40px;
+	margin-top: 20px;
 	box-shadow: 3px 3px 8px rgb(0,0,0, 0.3);
 }
 

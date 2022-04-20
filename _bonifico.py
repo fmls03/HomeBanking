@@ -8,7 +8,7 @@ import _app
 
 
 @bonifico_bp.route('/bonifico', methods = ['GET', 'POST'])
-def bonifico():
+def bonifico_istantaneo():
     alert = ""
     if request.method == 'POST':
         beneficiario = request.form['beneficiario']
@@ -32,13 +32,13 @@ def bonifico():
             _app.db.session.refresh(bonifico)
 
             # Effettuato il bonifico aggiorniamo il saldo disponibile del mittente
-            updated_saldo_mittente = saldo_mittente.saldo_disponibile - importo
-            saldo_mittente.saldo_disponibile = updated_saldo_mittente
+            saldo_mittente.saldo_disponibile -= importo
+            saldo_mittente.saldo_contabile -= importo
 
             # Ora facciamo una select del saldo del destinatario per poi aggiornarlo con l'importo ricevuto
             saldo_destinatario = _app.Saldo.query.filter_by(id_conto = conto_destinatario.id_conto).first()
-            updated_saldo_destinatario = saldo_destinatario.saldo_disponibile + importo
-            saldo_destinatario.saldo_disponibile = updated_saldo_destinatario
+            saldo_destinatario.saldo_disponibile += importo 
+            saldo_destinatario.saldo_contabile += importo
             
 
             # applichiamo i valori modificati al database

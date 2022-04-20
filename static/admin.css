@@ -41,6 +41,13 @@ body{
 	text-decoration: none;
 }
 
+#link-logout{
+	color: white;
+	text-decoration: none;
+	margin-right: 15px;
+	margin-left: auto;
+}
+
 #span-users{
 	color: white;
     width: auto;
@@ -74,11 +81,9 @@ body{
 
 .div-buttons{
 	margin-left: auto;
+	display: flex;
 }
 
-#btn-id_user{
-	display: none;
-}
 
 
 #btn-actions{

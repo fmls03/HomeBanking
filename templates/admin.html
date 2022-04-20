@@ -20,8 +20,15 @@
                 Admin
             </span>
         </a>
+
+        <a id="link-logout" href="/logout">
+            <span id="span-logout">
+                Logout
+            </span>
+        </a>
+
+
     </nav>
-    <form method="post">
     <div class="page">
 
         <span id="span-users">
@@ -31,18 +38,22 @@
         <div class="users">
             <span id="span-username">{{user.username}}</span>
             <span id="span-saldo-disponibile">- saldo disponibile: {{user.conto.saldo.saldo_disponibile}}$</span>
+            
             <div class="div-buttons">
-                <button type="submit" id="btn-actions" name="action" value="invia-denaro">Invia denaro</button>
-                <button type="submit" id="btn-actions" name="svuota-saldo" value="{{user.id_user}}">Svuota saldo</button>
-                <button type="submit" id="btn-actions" name="elimina-utente" value="{{user.id_user}}">Elimina utente</button>
-            </button>
+                <form action="{{ user.id_user }}/invia_denaro" method="post">
+                    <button type="submit" id="btn-actions">Invia denaro</button>
+                </form>
+
+                <form action="{{ user.id_user }}/svuota_saldo" method="post">
+                    <button type="submit" id="btn-actions">Svuota saldo</button>
+                </form>
+
             </div>
 
         </div>
-
         {% endfor %}
+
     </div>
-    </form>
 </body>
 
 </html>
