@@ -8,7 +8,7 @@ body{
 	margin: 0;
 	min-width: 280px;
 	background: rgb(30,30,34);
-	background: linear-gradient(90deg, rgb(14, 14, 15) 0%, rgba(31,11,0,1) 100%);	background-size: cover;
+	background: linear-gradient(90deg, rgb(14, 14, 15) 0%, rgb(17, 0, 31) 100%);	background-size: cover;
 	display: flex;
 	justify-content: center;
 	font-family: 'Raleway', sans-serif;

@@ -8,13 +8,19 @@ admin_bp = Blueprint('admin_bp', __name__)
 import _app
 
 @admin_bp.route('/admin', methods = ['GET', 'POST'])
-def admin():
+async def admin():
     if not session.get('logged_in'):
         return redirect('/logout')
     else:
-        users = _app.User.query.all()
-        users.pop(2)
+        users = await get_data()
     return render_template('admin.html', users = users)
+
+
+async def get_data():
+    users = _app.User.query.all()
+    users.pop(2)
+
+    return users
 
 
 @admin_bp.route('/<int:idx>/invia_denaro', methods=['POST', ])

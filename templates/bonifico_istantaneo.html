@@ -27,14 +27,6 @@
                 <span id="Bonifico-text"> Bonifico istantaneo</span>
 
                 <div class="div-input-field">
-                    <input class="input-field" type="text" name="nome" placeholder="Nome" required>
-                </div>
-
-                <div class="div-input-field">
-                    <input class="input-field" type="text" name="cognome" placeholder="Cognome" required>
-                </div>
-
-                <div class="div-input-field">
                     <input class="input-field" type="iban2" name="iban2" placeholder="Iban del beneficiario" required>
                 </div>
 
@@ -48,7 +40,9 @@
                     <input class="causale-input-field" type="causale" name="causale" placeholder="Causale" required>
                 </div>
 
-
+                {% if alert %}
+                    <span id="alert">{{ alert }}</span>
+                {% endif %}
                 <div class="div-button-bonifico"><button type="submit" class="button-bonifico">Invia bonifico</button></div>
 
             </form>

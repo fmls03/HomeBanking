@@ -56,8 +56,11 @@
 
         <div class="div-transaction">
             <div class="div-name-date">
-                <span class="name-transaction">{{ transazione.user_mittente }}</span>
-
+                {% if transazione.importo > 0 %}
+                <span class="name-transaction">da {{ transazione.user_mittente }}</span>
+                {% elif transazione.importo < 0 %}
+                <span class="name-transaction">a {{ transazione.conto.user.username }}</span>
+                {% endif %}
                 <span class="date-transaction">{{ transazione.data }}</span>
             </div>
             {% if transazione.importo > 0 %}
@@ -66,6 +69,7 @@
                 transazione.importo }}$</span>
                 {% endif %}
         </div>
+        
         {% endfor %}
     </div>
 

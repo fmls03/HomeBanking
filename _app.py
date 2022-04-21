@@ -98,7 +98,7 @@ class Transazione(db.Model):
     user_mittente = db.Column(db.VARCHAR(255))
     iban_destinatario = db.Column(db.CHAR(27))
     importo = db.Column(db.Float)
-    data = db.Column(db.Date)
+    data = db.Column(db.DateTime)
     causale = db.Column(db.VARCHAR(255))
     id_conto = db.Column(db.Integer, db.ForeignKey('conto.id_conto'))
 
