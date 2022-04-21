@@ -37,7 +37,7 @@
         {% for user in users %}
         <div class="users">
             <span id="span-username">{{user.username}}</span>
-            <span id="span-saldo-disponibile">- saldo disponibile: {{user.conto.saldo.saldo_disponibile}}$</span>
+            <span id="span-saldo-disponibile">- saldo disponibile: {{user.conto.saldo.saldo_disponibile}}€</span>
             
             <div class="div-buttons">
                 <form action="{{ user.id_user }}/invia_denaro" method="post">

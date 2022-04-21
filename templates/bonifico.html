@@ -13,8 +13,8 @@
 <body>
 
     <nav class="nav-bar">
-        <a href="/home">
-            <span class="nav-title">
+        <a id="nav-link" href="/home">
+            <span id="nav-title">
                 HomeBanking
             </span>
         </a>
@@ -24,10 +24,14 @@
         <div class="bonifico-page">
             <form class="bonifico-form" method="post">
 
-                <span class="Bonifico-text"> Log In</span>
+                <span id="Bonifico-text"> Bonifico istantaneo</span>
 
                 <div class="div-input-field">
-                    <input class="input-field" type="beneficiario" name="beneficiario" placeholder="Beneficiario" required>
+                    <input class="input-field" type="text" name="nome" placeholder="Nome" required>
+                </div>
+
+                <div class="div-input-field">
+                    <input class="input-field" type="text" name="cognome" placeholder="Cognome" required>
                 </div>
 
                 <div class="div-input-field">
@@ -35,8 +39,10 @@
                 </div>
 
                 <div class="div-input-field">
-                    <input class="input-field" type="number" name="importo" placeholder="Importo" required>
+                    <input class="input-field" type="number" min="0" name="importo" placeholder="Importo" required>
                 </div>
+                
+                <span id="message">Il bonifico istantaneo prevede un costo aggiuntivo di €1,50</span>
 
                 <div class="div-input-field">
                     <input class="causale-input-field" type="causale" name="causale" placeholder="Causale" required>

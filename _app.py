@@ -9,7 +9,7 @@ from _home import *
 from _logout import *
 from _redirecting import *
 from _signup import *
-from _bonifico import *
+from _bonifico_istantaneo import *
 from _admin import *
 
 secret_key = str(os.urandom(256))

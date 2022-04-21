@@ -11,7 +11,8 @@ import _app
 def bonifico_istantaneo():
     alert = ""
     if request.method == 'POST':
-        beneficiario = request.form['beneficiario']
+        nome = request.form['nome']
+        cognome = request.form['cognome']
         iban_beneficiario = request.form['iban2']
         importo = int(request.form['importo'])
         causale = request.form['causale']
@@ -19,25 +20,24 @@ def bonifico_istantaneo():
 
         conto_destinatario = _app.Conto.query.filter_by(iban = iban_beneficiario).first()
         saldo_mittente = _app.Saldo.query.filter_by(id_conto = session.get('id_conto')).first()
-        print(saldo_mittente.saldo_disponibile)
         if saldo_mittente.saldo_disponibile < importo:
             alert = "* IL SALDO NON SODDISFA L'IMPORTO SELEZIONATO *"
 
         else:
-            bonifico = _app.Transazione(session.get('username'), iban_beneficiario, importo, datetime.datetime.now(), causale, conto_destinatario.id_conto)
 
+            bonifico = _app.Transazione(session.get('username'), iban_beneficiario, importo, datetime.datetime.now(), causale, conto_destinatario.id_conto)
 
             _app.db.session.add(bonifico)
             _app.db.session.commit()        
             _app.db.session.refresh(bonifico)
 
             # Effettuato il bonifico aggiorniamo il saldo disponibile del mittente
-            saldo_mittente.saldo_disponibile -= importo
-            saldo_mittente.saldo_contabile -= importo
+            saldo_mittente.saldo_disponibile -= importo + 1.50
+            saldo_mittente.saldo_contabile -= importo + 1.50 
 
             # Ora facciamo una select del saldo del destinatario per poi aggiornarlo con l'importo ricevuto
             saldo_destinatario = _app.Saldo.query.filter_by(id_conto = conto_destinatario.id_conto).first()
-            saldo_destinatario.saldo_disponibile += importo 
+            saldo_destinatario.saldo_disponibile += importo
             saldo_destinatario.saldo_contabile += importo
             
 
