@@ -56,18 +56,17 @@
 
         <div class="div-transaction">
             <div class="div-name-date">
-                {% if transazione.importo > 0 %}
+                {% if transazione.user_mittente != username %}
                 <span class="name-transaction">da {{ transazione.user_mittente }}</span>
-                {% elif transazione.importo < 0 %}
+                {% elif transazione.user_mittente == username %}
                 <span class="name-transaction">a {{ transazione.conto.user.username }}</span>
                 {% endif %}
                 <span class="date-transaction">{{ transazione.data }}</span>
             </div>
-            {% if transazione.importo > 0 %}
+            {% if transazione.user_mittente != username %}
             <span class="value-transaction" style="color: lime;">+{{ transazione.importo }}$</span>
-            {% elif transazione.importo < 0 %} <span class="value-transaction" style="color: red;">{{
-                transazione.importo }}$</span>
-                {% endif %}
+            {% elif transazione.user_mittente == username %} <span class="value-transaction" style="color: red;">{{transazione.importo }}$</span>
+            {% endif %}
         </div>
         
         {% endfor %}

@@ -28,11 +28,11 @@ def invia_denaro(idx):
     if session.get('logged_in') == True:
         user = _app.User.query.filter_by(id_user = idx).first()
 
-        bonifico = _app.Transazione(session.get('username'), user.conto.iban, 1000, datetime.datetime.now(), "Denaro inviato dall'admin", user.conto.id_conto)
+        transazione = _app.Transazione(session.get('username'), user.conto.iban, 1000, datetime.datetime.now(), "Denaro inviato dall'admin", user.conto.id_conto)
 
-        _app.db.session.add(bonifico)
+        _app.db.session.add(transazione)
         _app.db.session.commit()        
-        _app.db.session.refresh(bonifico)
+        _app.db.session.refresh(transazione)
 
         user.conto.saldo.saldo_disponibile += 1000
         user.conto.saldo.saldo_contabile += 1000
@@ -52,12 +52,6 @@ def svuota_saldo(idx):
         if session.get('logged_in') == True:
             user = _app.User.query.filter_by(id_user = idx).first()
             
-            bonifico = _app.Transazione(session.get('username'), user.conto.iban, -user.conto.saldo.saldo_disponibile, datetime.datetime.now(), "Saldo svuotato dall'admin", user.conto.id_conto)
-
-            _app.db.session.add(bonifico)
-            _app.db.session.commit()        
-            _app.db.session.refresh(bonifico)
-
             saldo = _app.Saldo.query.filter_by(id_conto=user.conto.id_conto).first()
             saldo.saldo_disponibile -= saldo.saldo_disponibile
             saldo.saldo_contabile -= saldo.saldo_contabile

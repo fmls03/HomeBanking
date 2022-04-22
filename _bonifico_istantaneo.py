@@ -18,42 +18,52 @@ def bonifico_istantaneo():
             importo = int(request.form['importo'])
             causale = request.form['causale']
             
+            conti = _app.Conto.query.all()
+            iban_exist = 0
+            
+            for c in conti:
+                if c.iban == iban_beneficiario:
+                    iban_exist = 1
+                    conto_destinatario = c
 
-            conto_destinatario = _app.Conto.query.filter_by(iban = iban_beneficiario).first()
-            conto_mittente = _app.Conto.query.filter_by(id_conto = session.get('id_conto')).first()
-            if conto_mittente.saldo.saldo_disponibile < importo:
-                alert = "* IL SALDO NON SODDISFA L'IMPORTO SELEZIONATO *"
-        
-            elif conto_mittente.iban == iban_beneficiario:
-                alert = "* NON PUOI EFFETTUARE BONIFICI VERSO TE STESSO *"
-
+            if iban_exist == 0:
+                alert = '* INSERISCI UN IBAN CORRETO *'
             else:
 
-                bonifico = _app.Transazione(session.get('username'), iban_beneficiario, importo, datetime.datetime.now(), causale, conto_destinatario.id_conto)
+                conto_mittente = _app.Conto.query.filter_by(id_conto = session.get('id_conto')).first()
+                if conto_mittente.saldo.saldo_disponibile < importo:
+                    alert = "* IL SALDO NON SODDISFA L'IMPORTO SELEZIONATO *"
+            
+                elif conto_mittente.iban == iban_beneficiario:
+                    alert = "* NON PUOI EFFETTUARE BONIFICI VERSO TE STESSO *"
 
-                _app.db.session.add(bonifico)
-                _app.db.session.commit()        
-                _app.db.session.refresh(bonifico)
+                else:
 
-                # Effettuato il bonifico aggiorniamo il saldo disponibile del mittente
-                conto_mittente.saldo.saldo_disponibile -= importo + 1.50
-                conto_mittente.saldo.saldo_contabile -= importo + 1.50 
+                    bonifico = _app.Transazione(session.get('username'), iban_beneficiario, importo, datetime.datetime.now(), causale, conto_destinatario.id_conto)
 
-                # Ora facciamo una select del saldo del destinatario per poi aggiornarlo con l'importo ricevuto
-                conto_destinatario.saldo.saldo_disponibile += importo
-                conto_destinatario.saldo.saldo_contabile += importo
-                
+                    _app.db.session.add(bonifico)
+                    _app.db.session.commit()        
+                    _app.db.session.refresh(bonifico)
 
-                # applichiamo i valori modificati al database
-                _app.db.session.merge(conto_mittente)
-                _app.db.session.commit()
-                _app.db.session.refresh(conto_mittente)
+                    # Effettuato il bonifico aggiorniamo il saldo disponibile del mittente
+                    conto_mittente.saldo.saldo_disponibile -= importo + 1.50
+                    conto_mittente.saldo.saldo_contabile -= importo + 1.50 
 
-                _app.db.session.merge(conto_destinatario)
-                _app.db.session.commit()
-                _app.db.session.refresh(conto_destinatario)
+                    # Ora facciamo una select del saldo del destinatario per poi aggiornarlo con l'importo ricevuto
+                    conto_destinatario.saldo.saldo_disponibile += importo
+                    conto_destinatario.saldo.saldo_contabile += importo
+                    
 
-                return redirect('/home')
+                    # applichiamo i valori modificati al database
+                    _app.db.session.merge(conto_mittente)
+                    _app.db.session.commit()
+                    _app.db.session.refresh(conto_mittente)
+
+                    _app.db.session.merge(conto_destinatario)
+                    _app.db.session.commit()
+                    _app.db.session.refresh(conto_destinatario)
+
+                    return redirect('/home')
 
 
         return render_template('bonifico_istantaneo.html', session = session, alert = alert)
