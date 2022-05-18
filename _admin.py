@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, redirect, render_template, request, session
 from sqlalchemy import *
 import datetime
+import operator
 
 
 admin_bp = Blueprint('admin_bp', __name__)
@@ -16,9 +17,11 @@ def admin():
     return render_template('admin.html', users = users)
 
 def get_data():
+    us = 'admin'
     users = _app.User.query.all()
-    users.pop(2)
-
+    for user in users:
+        if user.username == us:
+            users.remove(user)
     return users
 
 
