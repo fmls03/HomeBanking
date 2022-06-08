@@ -16,11 +16,17 @@ secret_key = str(os.urandom(256))
 
 app = Flask(__name__)
 app.config['SECRET_KEY']= secret_key
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://fmls03:Schipilliti03@localhost/HomeBanking'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://fmls03:Schipilliti03@fmls.ddns.net/HomeBanking'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 
+DB_POOL_SIZE = int(os.getenv("DB_POOL_SIZE", "100"))
+WEB_CONCURRENCY = int(os.getenv("WEB_CONCURRENCY", "2"))
+POOL_SIZE = max(DB_POOL_SIZE // WEB_CONCURRENCY, 5)
+
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = dict(pool_size=POOL_SIZE, max_overflow=0)
 
 db = SQLAlchemy(app)
+
 
 app.register_blueprint(home_bp)
 app.register_blueprint(login_bp)
@@ -115,4 +121,4 @@ def index():
     return redirect('/logout')
 
 if __name__ == '__main__':
-    app.run('localhost', 5000, debug=True) 
+    app.run('localhost', 5000, debug=True, threaded=True) 

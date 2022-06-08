@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint, redirect, render_template, request, session
 from passlib.hash import sha256_crypt
 from codicefiscale import codicefiscale
-
+import time
 
 from sqlalchemy import *
 
@@ -79,6 +79,8 @@ def signup():
 			_app.db.session.add(saldo)	
 			
 			_app.db.session.commit()
+
+			time.sleep(2.5)
 
 			return redirect('/redirecting')
 

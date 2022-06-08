@@ -4,7 +4,7 @@ redirecting_bp = Blueprint('redirecting_bp', __name__)
 
 @redirecting_bp.route('/redirecting')
 def redirecting():
-	if session.get('logged_in') == False:
+	if not session.get('logged_in'):
 		return redirect('/login')
 	else:
 		return redirect('/home')
