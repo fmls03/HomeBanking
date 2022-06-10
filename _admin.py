@@ -62,6 +62,8 @@ def svuota_saldo(idx):
 
             _app.db.session.merge(saldo)
             _app.db.session.commit()
+
+            _app.db.session.remove()
             
         else:
             return redirect('/redirecting')

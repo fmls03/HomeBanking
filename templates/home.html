@@ -65,7 +65,7 @@
             </div>
             {% if transazione.user_mittente != username %}
             <span class="value-transaction" style="color: lime;">+{{ transazione.importo }}$</span>
-            {% elif transazione.user_mittente == username %} <span class="value-transaction" style="color: red;">{{transazione.importo }}$</span>
+            {% elif transazione.user_mittente == username %} <span class="value-transaction" style="color: red;">-{{transazione.importo }}$</span>
             {% endif %}
         </div>
         
